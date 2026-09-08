@@ -1,6 +1,6 @@
 import { Database } from 'bun:sqlite';
 
-export const db = new Database(process.env.DB_PATH || 'subscriptions.db');
+const db = new Database(process.env.DB_PATH || 'subscriptions.db');
 
 db.run('PRAGMA journal_mode = WAL');
 db.run('PRAGMA foreign_keys = ON');

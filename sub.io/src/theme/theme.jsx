@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, useEffect } from 'react';
+import { createContext, useMemo, useState, useEffect } from 'react';
 
 export const light = {
   bg: '#FFFFFF',
@@ -53,6 +53,3 @@ export function ThemeProvider({ children }) {
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
-export function useTheme() {
-  return useContext(ThemeContext).theme;
-}

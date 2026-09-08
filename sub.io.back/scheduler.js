@@ -57,7 +57,7 @@ function rollOverIfPast(sub) {
   return { ...sub, nextDate: rolled };
 }
 
-export function cancelReminderJob(reminderId) {
+function cancelReminderJob(reminderId) {
   const job = jobs.get(reminderId);
   if (job) {
     job.stop();
@@ -71,7 +71,7 @@ export function cancelSubscriptionJobs(sub) {
   }
 }
 
-export function scheduleReminder(sub, reminder) {
+function scheduleReminder(sub, reminder) {
   cancelReminderJob(reminder.id);
 
   if (reminder.lastSentFor === sub.nextDate) return;

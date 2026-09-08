@@ -36,7 +36,7 @@ export function stopUserTelegramBot(userId) {
   }
 }
 
-export function sendTelegramMessage(creds, text) {
+function sendTelegramMessage(creds, text) {
   if (!isTelegramConfigured(creds)) {
     return Promise.reject(new Error('Telegram is not configured for this account'));
   }

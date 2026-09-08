@@ -1,5 +1,5 @@
 import { createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
-import { mkdirSync, existsSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'node:fs';
+import { mkdirSync, existsSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 
 const VAULT_DIR = process.env.VAULT_DIR || path.join(process.cwd(), 'vault-data');
@@ -58,11 +58,6 @@ export function saveVault(userId, values) {
   const merged = { ...current, ...values };
   writeFileSync(vaultPath(userId), encrypt(merged), 'utf8');
   return merged;
-}
-
-export function deleteVault(userId) {
-  const file = vaultPath(userId);
-  if (existsSync(file)) unlinkSync(file);
 }
 
 export function listVaultUserIds() {

@@ -12,10 +12,6 @@ export function dateKey(date) {
   ).padStart(2, '0')}`;
 }
 
-export function isSameDay(a, b) {
-  return dateKey(a) === dateKey(b);
-}
-
 function addMonths(date, amount) {
   const day = date.getDate();
   const result = new Date(date.getFullYear(), date.getMonth() + amount, 1);
