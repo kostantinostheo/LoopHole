@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="lh-grad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#47bfff"/>
+      <stop offset="1" stop-color="#7e14ff"/>
+    </linearGradient>
+  </defs>
+  <path
+    d="M24 4
+       a20 20 0 1 1 0 40
+       a20 20 0 1 1 0 -40
+       Z
+       M24 13
+       a11 11 0 1 0 0 22
+       a11 11 0 1 0 0 -22
+       Z"
+    fill="url(#lh-grad)"
+    fill-rule="evenodd"
+  />
+</svg>

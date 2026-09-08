@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./sub.io.back
+    env_file:
+      - ./sub.io.back/.env
+    volumes:
+      - backend_data:/app/data
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./sub.io
+      args:
+        VITE_API_BASE_URL: ""
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  backend_data:
