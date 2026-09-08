@@ -37,6 +37,8 @@ export default function SettingsPage() {
   const [testEmailStatus, setTestEmailStatus] = useState(null);
   const [testTelegramStatus, setTestTelegramStatus] = useState(null);
 
+  const [pendingAction, setPendingAction] = useState(null);
+
   useEffect(() => {
     apiFetch('/api/vault')
       .then((data) => setVault({ ...EMPTY_VAULT, ...data }))
@@ -48,8 +50,16 @@ export default function SettingsPage() {
     setVault((prev) => ({ ...prev, [key]: value }));
   }
 
-  async function handleVaultSubmit(e) {
+  function handleVaultSubmit(e) {
     e.preventDefault();
+    setPendingAction({
+      title: 'Save integrations?',
+      message: 'This will overwrite your saved EmailJS and Telegram credentials.',
+      run: performVaultSubmit,
+    });
+  }
+
+  async function performVaultSubmit() {
     setVaultStatus(null);
     setVaultSubmitting(true);
     try {
@@ -83,8 +93,16 @@ export default function SettingsPage() {
     }
   }
 
-  async function handleEmailSubmit(e) {
+  function handleEmailSubmit(e) {
     e.preventDefault();
+    setPendingAction({
+      title: 'Update email?',
+      message: `Change your account email to "${email}"?`,
+      run: performEmailSubmit,
+    });
+  }
+
+  async function performEmailSubmit() {
     setEmailStatus(null);
     setEmailSubmitting(true);
     try {
@@ -97,8 +115,16 @@ export default function SettingsPage() {
     }
   }
 
-  async function handleCurrencySubmit(e) {
+  function handleCurrencySubmit(e) {
     e.preventDefault();
+    setPendingAction({
+      title: 'Update currency?',
+      message: `Change your display currency to ${CURRENCIES[currency]?.label || currency}?`,
+      run: performCurrencySubmit,
+    });
+  }
+
+  async function performCurrencySubmit() {
     setCurrencyStatus(null);
     setCurrencySubmitting(true);
     try {
@@ -111,7 +137,7 @@ export default function SettingsPage() {
     }
   }
 
-  async function handlePasswordSubmit(e) {
+  function handlePasswordSubmit(e) {
     e.preventDefault();
     setPasswordStatus(null);
 
@@ -124,6 +150,14 @@ export default function SettingsPage() {
       return;
     }
 
+    setPendingAction({
+      title: 'Update password?',
+      message: "You'll need your new password the next time you sign in.",
+      run: performPasswordSubmit,
+    });
+  }
+
+  async function performPasswordSubmit() {
     setPasswordSubmitting(true);
     try {
       await updatePassword(currentPassword, newPassword);
@@ -136,6 +170,12 @@ export default function SettingsPage() {
     } finally {
       setPasswordSubmitting(false);
     }
+  }
+
+  function confirmPendingAction() {
+    const action = pendingAction;
+    setPendingAction(null);
+    action?.run();
   }
 
   return (
@@ -374,6 +414,23 @@ export default function SettingsPage() {
           </>
         )}
       </form>
+
+      {pendingAction && (
+        <div className="modal-backdrop" onClick={() => setPendingAction(null)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <h2 className="modal__title">{pendingAction.title}</h2>
+            <p className="modal__text">{pendingAction.message}</p>
+            <div className="modal__actions">
+              <button className="btn btn--secondary" onClick={() => setPendingAction(null)}>
+                Cancel
+              </button>
+              <button className="btn btn--primary" onClick={confirmPendingAction}>
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
