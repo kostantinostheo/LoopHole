@@ -4,7 +4,7 @@ import { run } from 'node-telegram-bot-api/node';
 // Every user brings their own bot; polling it lets the bot reply with the chat ID.
 const runningBots = new Map();
 
-// Mirrors the frontend's CURRENCIES (sub.io/src/utils/money.js).
+// Mirrors the frontend's CURRENCIES (frontend/src/utils/money.js).
 const CURRENCY_SYMBOLS = { USD: '$', EUR: '€', GBP: '£' };
 
 export function isTelegramConfigured(creds) {

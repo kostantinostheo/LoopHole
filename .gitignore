@@ -1,9 +1,9 @@
 node_modules/
 dist/
 *.log
-sub.io.back/vault-data/
-sub.io.back/subscriptions.db
-sub.io.back/subscriptions.db-shm
-sub.io.back/subscriptions.db-wal
+backend/vault-data/
+backend/subscriptions.db
+backend/subscriptions.db-shm
+backend/subscriptions.db-wal
 .env
 **/.env

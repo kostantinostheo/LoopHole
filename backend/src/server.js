@@ -30,7 +30,7 @@ app.use((err, req, res, _next) => {
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-  console.log(`sub.io backend listening on port ${PORT}`);
+  console.log(`LoopHole backend listening on port ${PORT}`);
   startScheduler();
 
   if (!isVaultConfigured()) {

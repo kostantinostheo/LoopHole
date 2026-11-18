@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run backend (sub.io.back, bun --watch on :4000) and frontend (sub.io, vite) together in dev mode.
+# Run backend (backend/, bun --watch on :4000) and frontend (frontend/, vite) together in dev mode.
 # Ctrl+C stops both.
 set -euo pipefail
 
