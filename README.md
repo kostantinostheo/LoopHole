@@ -1,10 +1,45 @@
-# LoopHole
+<h1 align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo-dark.png">
+    <img src="docs/images/logo.png" alt="LoopHole" width="360">
+  </picture>
+</h1>
+
+<p align="center"><b>Track every subscription. Never miss a renewal.</b></p>
 
 LoopHole tracks your recurring subscriptions and reminds you on Telegram before they renew.
 
 You add each subscription (Netflix, cloud storage, a gym, and so on) with its price, billing cycle and next renewal date. You choose when to be reminded, for example 3 days before at 9:00 in your own timezone. LoopHole sends the reminder to your Telegram, moves the renewal date forward on its own once it passes, and shows what you spend each month and over the next year.
 
 It installs as a PWA, so it works like an app on a phone.
+
+## Screenshots
+
+### Mobile
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/images/dashboard.png" alt="Dashboard: subscription list with monthly total and upcoming reminders" width="200"><br><sub>Dashboard</sub></td>
+    <td align="center"><img src="docs/images/add-subscription.png" alt="Form for adding a new subscription with a reminder" width="200"><br><sub>Add a subscription</sub></td>
+    <td align="center"><img src="docs/images/calendar.png" alt="Month calendar showing renewals colour-coded by category" width="200"><br><sub>Calendar</sub></td>
+    <td align="center"><img src="docs/images/statistics.png" alt="Statistics: monthly spend, billing cycle split and spend by category" width="200"><br><sub>Statistics</sub></td>
+  </tr>
+</table>
+
+### Desktop
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/images/desktop-dashboard.png" alt="Dashboard on desktop" width="420"><br><sub>Dashboard</sub></td>
+    <td align="center"><img src="docs/images/desktop-add-subscription.png" alt="Add subscription dialog on desktop" width="420"><br><sub>Add a subscription</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/desktop-calendar.png" alt="Month calendar on desktop" width="420"><br><sub>Calendar</sub></td>
+    <td align="center"><img src="docs/images/desktop-statistics.png" alt="Statistics on desktop" width="420"><br><sub>Statistics</sub></td>
+  </tr>
+</table>
+
+<sub>Sample data only. Login screens: <a href="docs/images/login.png">mobile</a> · <a href="docs/images/desktop-login.png">desktop</a>.</sub>
 
 ## Features
 
@@ -25,6 +60,7 @@ LoopHole/
 ├── backend/             Backend: Bun + Express 5 + SQLite
 ├── docker-compose.yml   Runs both services together
 ├── dev.sh               Runs both in development mode
+├── docs/images/         Logo and README screenshots
 └── DEPLOY.md            Full deployment guide
 ```
 
