@@ -1,15 +1,16 @@
 services:
   backend:
-    build: ./sub.io.back
+    build: ./backend
     env_file:
-      - ./sub.io.back/.env
+      - path: ./backend/.env
+        required: false
     volumes:
       - backend_data:/app/data
     restart: unless-stopped
 
   frontend:
     build:
-      context: ./sub.io
+      context: ./frontend
       args:
         VITE_API_BASE_URL: ""
     ports:
